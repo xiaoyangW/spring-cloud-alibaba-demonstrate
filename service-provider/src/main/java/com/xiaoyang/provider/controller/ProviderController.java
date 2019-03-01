@@ -1,10 +1,11 @@
 package com.xiaoyang.provider.controller;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +14,15 @@ import java.util.Map;
  * @author xiaoyang.wen
  * @date 2019/2/28 17:24
  */
+@RefreshScope
 @RestController
 @RequestMapping("/provider")
 public class ProviderController {
 
     private static Map<String, String> nameMap;
+
+    @Value("${name}")
+    String name;
 
     @PostConstruct
     public void initMap() {
@@ -34,6 +39,10 @@ public class ProviderController {
             return nameMap.get(id);
         }
         return null;
+    }
+    @GetMapping("/config")
+    public String config(){
+        return name;
     }
 
 }
