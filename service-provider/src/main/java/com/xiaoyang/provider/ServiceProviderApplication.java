@@ -15,5 +15,4 @@ public class ServiceProviderApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServiceProviderApplication.class, args);
     }
-
 }
