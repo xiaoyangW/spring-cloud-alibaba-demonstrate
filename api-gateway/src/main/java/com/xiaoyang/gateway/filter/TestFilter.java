@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
 /**
  * @author xiaoyang.wen
  * @date 2019/3/6 10:42
+ *  实现GlobalFilter是全局拦截器，实现GatewayFilter接口单独指定某个路由
  */
 public class TestFilter implements GlobalFilter, Ordered {
 
