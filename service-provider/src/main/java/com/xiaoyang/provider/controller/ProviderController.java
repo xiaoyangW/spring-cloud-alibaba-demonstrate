@@ -1,5 +1,6 @@
 package com.xiaoyang.provider.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,9 @@ public class ProviderController {
     }
 
     @GetMapping("/id/{id}")
-    public String getNameById(@PathVariable("id") String id) {
+    //@SentinelResource(value = "provider-name",fallback = "Fall Back")
+    public String getNameById(@PathVariable("id") String id) throws InterruptedException {
+        //Thread.sleep(6000);
         if (!"".equals(id)) {
             return nameMap.get(id);
         }
