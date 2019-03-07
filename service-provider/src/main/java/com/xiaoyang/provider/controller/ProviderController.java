@@ -35,9 +35,7 @@ public class ProviderController {
     }
 
     @GetMapping("/id/{id}")
-    //@SentinelResource(value = "provider-name",fallback = "Fall Back")
-    public String getNameById(@PathVariable("id") String id) throws InterruptedException {
-        //Thread.sleep(6000);
+    public String getNameById(@PathVariable("id") String id) {
         if (!"".equals(id)) {
             return nameMap.get(id);
         }
